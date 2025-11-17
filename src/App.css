@@ -1,0 +1,229 @@
+/* Reset default margins and padding, set base font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* Red and blue checkerboard pattern */
+    background-color: #ff0000;
+    background-image: 
+        linear-gradient(45deg, #0000ff 25%, transparent 25%),
+        linear-gradient(-45deg, #0000ff 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #0000ff 75%),
+        linear-gradient(-45deg, transparent 75%, #0000ff 75%);
+    background-size: 80px 80px;
+    background-position: 0 0, 0 40px, 40px -40px, -40px 0px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Calculator container - centered on page, wider for scientific calculator */
+.calculator {
+    background-color: #2c3e50;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 100%;
+}
+
+/* Display container with angle mode indicator */
+.display-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.angle-mode {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: #95a5a6;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Display screen at the top */
+.display {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 2.5rem;
+    padding: 20px;
+    padding-left: 60px;
+    text-align: right;
+    border-radius: 10px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Main calculator grid - 3 column layout */
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+    gap: 10px;
+}
+
+/* Left column: Scientific functions */
+.scientific-functions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* Center: Number pad */
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* Right column: Basic operators */
+.operators {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+/* Base button styling */
+.btn {
+    padding: 15px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    min-height: 50px;
+}
+
+/* Operator buttons in right column should be taller */
+.operators .btn {
+    min-height: 60px;
+}
+
+/* Hover effect for all buttons */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Active/pressed effect */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Number buttons - light gray */
+.btn.number {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+.btn.number:hover {
+    background-color: #d5dbdb;
+}
+
+/* Operator buttons - orange */
+.btn.operator {
+    background-color: #e67e22;
+    color: white;
+}
+
+.btn.operator:hover {
+    background-color: #d35400;
+}
+
+/* Scientific function buttons - purple */
+.btn.scientific {
+    background-color: #9b59b6;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.btn.scientific:hover {
+    background-color: #8e44ad;
+}
+
+/* Memory buttons - teal */
+.btn.memory {
+    background-color: #16a085;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.btn.memory:hover {
+    background-color: #138d75;
+}
+
+/* Clear button - red */
+.btn.clear {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn.clear:hover {
+    background-color: #c0392b;
+}
+
+/* Equals button - green */
+.btn.equals {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn.equals:hover {
+    background-color: #229954;
+}
+
+/* Zero button spans 2 columns in number pad */
+.number-pad .btn.zero {
+    grid-column: span 2;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .calculator {
+        max-width: 100%;
+        padding: 15px;
+    }
+    
+    .calculator-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .scientific-functions,
+    .number-pad {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .operators {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .btn {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+        min-height: 45px;
+    }
+    
+    .operators .btn {
+        min-height: 45px;
+    }
+    
+    .display {
+        font-size: 2rem;
+        padding: 15px;
+        padding-left: 50px;
+    }
+}
